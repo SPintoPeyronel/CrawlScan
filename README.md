@@ -156,11 +156,6 @@ Hard rules cover cases where a weighted score alone would be misleading:
 
 > **Complex on-chain investigation -> one understandable verdict.**
 
-<div align="center">
-<img src="assets/scan.png" alt="CRAWLSCAN scan result" width="74%">
-<img src="assets/mobile.jpg" alt="CRAWLSCAN scan result on mobile" width="21%">
-</div>
-
 ## Built for speed
 
 Analysing wallets one by one would take minutes. CRAWLSCAN runs multiple wallet crawlers in parallel under a hard time budget, so a full verdict arrives in seconds while the interface streams the crawl live.
