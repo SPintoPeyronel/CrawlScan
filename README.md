@@ -26,7 +26,8 @@ CRAWLSCAN crawls the token's on-chain activity, analyses its top holders, follow
 
 The goal is to make a complex on-chain investigation understandable in seconds, without requiring users to manually inspect hundreds of transactions.
 
-![crawlscan](screen1.jpg)
+<img width="1222" height="565" alt="a975c314beafd848951bed5318d4651b" src="https://github.com/user-attachments/assets/19a30de7-0a6e-4fff-973c-d0b61654655a" />
+
 
 ### The core idea
 
@@ -87,7 +88,8 @@ The crawlers start by building the token's real holder picture directly from on-
 
 In both cases bonding curves, liquidity pools, lockers, routers and other infrastructure addresses are excluded, so the analysis focuses on actual wallets. Ownership is measured against the **real circulating float**, not against raw supply that sits locked in a curve or pool.
 
-![crawlscan](screen4.jpg)
+<img width="1314" height="572" alt="649c79618cc0ae395daa98a53e1dc6ae" src="https://github.com/user-attachments/assets/22fe4ee2-32a0-43f7-b8b0-6c5795692e30" />
+
 
 ### What CRAWLSCAN checks
 
@@ -129,7 +131,7 @@ Packs are treated as **behavioural signals**, not proof of common ownership, so 
 
 Exchanges, bridges, routers and other high-traffic addresses are never used to link wallets, so unrelated users are not glued together.
 
-![crawlscan](screen5.jpg)
+<img width="1315" height="520" alt="5b6c63a40d6c51d548cb987ca9eaf55c" src="https://github.com/user-attachments/assets/dbbddfe5-0c99-41b6-9e0a-46d9dabe043e" />
 
 ## Verdict
 
