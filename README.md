@@ -38,10 +38,9 @@ What normally requires manual blockchain analysis is reduced to a few seconds.
 
 ### Supported chains
 
-| Chain              | Launchpads                                   | Explorer links |
-| ------------------ | -------------------------------------------- | -------------- |
-| **Robinhood Chain** | Pons V2 (bonding curve and Uniswap V4 pools) | Robinhood explorer |
-| **Solana**          | pump.fun (bonding curve, PumpSwap and Raydium after migration) | Solscan |
+| Chain              | Launchpads                             | Explorer links |
+| ------------------ | ----------------------| -------------- |
+| **BNBChain**       | Flap (bonding curve ) | BNB explorer   |
 
 ## Why CRAWLSCAN is different
 
@@ -84,8 +83,7 @@ That distinction can completely change how a token's distribution should be read
 
 The crawlers start by building the token's real holder picture directly from on-chain data.
 
-* **Robinhood Chain**: the token's full transfer history since launch is read and the holder balances are reconstructed from it.
-* **Solana**: the top holders are read directly from the chain, then each holder's own history is crawled up to the moment it entered the token.
+* **BNBChain**: the token's full transfer history since launch is read and the holder balances are reconstructed from it.
 
 In both cases bonding curves, liquidity pools, lockers, routers and other infrastructure addresses are excluded, so the analysis focuses on actual wallets. Ownership is measured against the **real circulating float**, not against raw supply that sits locked in a curve or pool.
 
@@ -123,7 +121,7 @@ Wallets connected by proven links are merged into a single **operator**.
 
 Groups of fresh wallets that:
 
-* enter together: the same block on Robinhood Chain, neighbouring slots on Solana;
+* enter together: the same block on BNBChain;
 * buy near-identical amounts;
 * have no trading history before the launch.
 
@@ -190,8 +188,8 @@ Every crawler move you see on the page is a real step of the scan, not a loading
 CRAWLSCAN is intentionally lightweight.
 
 * **Python 3.12** with the **standard library only**: zero runtime dependencies.
-* **One adapter per chain**: Robinhood Chain and Solana each have their own adapter that turns on-chain data into the same set of facts. The detectors and the scoring are shared and chain-agnostic.
-* **Alchemy RPC**: read-only access to Robinhood Chain and Solana.
+* **One adapter per chain**: BNBChain each have their own adapter that turns on-chain data into the same set of facts. The detectors and the scoring are shared and chain-agnostic.
+* **Alchemy RPC**: read-only access to BNBChain.
 * **GeckoTerminal**: market data for the token header, with a short timeout so it never blocks a scan.
 * **Transaction-level trade classification**: real buys are recognised even through bot routers and aggregators.
 * **Parallel crawling** under a hard time budget.
@@ -233,16 +231,13 @@ CRAWLSCAN asks:
 
 ```sh
 cp .env.example .env
-# CRAWLER_RPC=https://robinhood-mainnet.g.alchemy.com/v2/<your-key>
-# SOLANA_RPC=https://solana-mainnet.g.alchemy.com/v2/<your-key>
-# SOLANA_ENABLED=true          # Solana scans are off unless this is true
+# CRAWLER_RPC=https://BNBCHAIN-mainnet.g.alchemy.com/v2/<your-key>
 python3 server.py
 ```
 
 Open `http://localhost:8000`, or go straight to:
 
-`http://localhost:8000/?ca=0x...` (Robinhood Chain) or `http://localhost:8000/?ca=<mint>` (Solana)
-
+`http://localhost:8000/?ca=0x...` (BNBChain) or `http://localhost:8000/?ca=<mint>` 
 Run the tests:
 
 ```sh
@@ -253,9 +248,8 @@ python3 -m unittest discover -s tests -v
 
 ### ✅ Shipped
 
-* [x] **Live crawler scanner for Robinhood Chain (Pons V2)**
+* [x] **Live crawler scanner for BNBChain**
 * [x] **Operator clustering**: proven links and behavioural packs
-* [x] **Solana support (pump.fun)**: automatic chain detection, Solscan links
 * [x] **Dump-impact scoring** and liquidity guard
 
 ### 🟢 In progress
